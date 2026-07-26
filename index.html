@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI YouTube Gesture // Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 50%, #7dd3fc 100%);
+            background-attachment: fixed;
+            color: #0f172a;
+        }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        
+        .glass-light-sky {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 20px 40px -15px rgba(2, 132, 199, 0.15);
+        }
+
+        .btn-cloud-shape {
+            border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+            background: #ffffff;
+            color: #0f172a;
+            box-shadow: 0 8px 20px -4px rgba(2, 132, 199, 0.2),
+                        inset 0 2px 4px rgba(255, 255, 255, 1);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 0.75rem 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-weight: 700;
+        }
+        .btn-cloud-shape:hover {
+            transform: translateY(-3px) scale(1.02);
+            color: #0284c7;
+            border-radius: 50% 50% 60% 40% / 60% 50% 50% 40%;
+            box-shadow: 0 12px 25px -4px rgba(2, 132, 199, 0.3),
+                        inset 0 2px 6px rgba(255, 255, 255, 1);
+            background: #f0f9ff;
+        }
+
+        .btn-cloud-rose:hover {
+            color: #e11d48 !important;
+            background: #fff1f2 !important;
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.5); border-radius: 8px; }
+        ::-webkit-scrollbar-thumb { background: rgba(2, 132, 199, 0.3); border-radius: 8px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(2, 132, 199, 0.6); }
+
+        .video-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 1.5rem;
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+        }
+        .video-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(2, 132, 199, 0.5);
+            box-shadow: 0 12px 30px -10px rgba(2, 132, 199, 0.2);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between p-6 antialiased">
+
+    <header class="w-full max-w-7xl mx-auto flex justify-between items-center py-4 px-8 glass-light-sky rounded-2xl mb-6">
+        <div class="flex items-center gap-6">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="window.location.href='/'">
+                <span class="text-xl">☁️</span>
+                <h1 class="text-xl font-extrabold tracking-tight text-slate-900">
+                    AI <span class="text-sky-600">YOUTUBE GESTURE</span>
+                </h1>
+            </div>
+
+            <a href="/" class="text-xs font-mono font-bold text-slate-600 hover:text-sky-600 transition-colors px-3 py-1.5 rounded-xl hover:bg-white/60 border border-transparent hover:border-sky-200 flex items-center gap-1.5">
+                <span>←</span> Home
+            </a>
+        </div>
+
+        <div class="flex items-center gap-2.5 bg-white/90 px-4 py-2 rounded-xl border border-sky-200 text-xs font-mono shadow-sm">
+            <span class="w-2.5 h-2.5 rounded-full bg-sky-500 animate-ping"></span>
+            <span class="text-slate-700 font-semibold tracking-wide">Online</span>
+        </div>
+    </header>
+
+    <main class="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 flex-1">
+        
+        <div class="lg:col-span-7 flex flex-col gap-6">
+            <div class="glass-light-sky rounded-3xl p-6 shadow-xl flex flex-col gap-5 flex-1">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-xs font-mono font-bold text-sky-700 uppercase tracking-widest">YouTube Neural Search</h2>
+                    <span class="text-xs text-sky-600 font-mono">API Connected</span>
+                </div>
+
+                <div class="flex gap-3">
+                    <div class="relative flex-1">
+                        <input type="text" id="search-query" placeholder="Search videos, tracks, lofi..." 
+                            onkeydown="if(event.key === 'Enter') performSearch()"
+                            class="w-full bg-white/90 border border-sky-200 rounded-2xl px-5 py-3.5 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-500/20 font-mono transition-all shadow-inner">
+                    </div>
+                    <button onclick="performSearch()" class="btn-cloud-shape text-sm shadow-md active:scale-95">
+                        Search
+                    </button>
+                </div>
+
+                <div id="results-container" class="grid grid-cols-2 gap-4 max-h-[420px] overflow-y-auto pr-2">
+                    <div class="col-span-2 flex flex-col items-center justify-center py-16 text-center">
+                        <div class="w-12 h-12 rounded-2xl bg-white border border-sky-200 flex items-center justify-center text-sky-500 mb-3 font-mono text-lg shadow-sm">☁️</div>
+                        <p class="text-xs text-slate-500 font-mono">Search a video to start your session...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="lg:col-span-5 flex flex-col gap-6">
+            <div class="glass-light-sky rounded-3xl p-6 shadow-xl flex flex-col gap-5">
+                
+                <div class="p-4 bg-white/70 rounded-2xl border border-sky-200 text-xs text-slate-700 font-mono shadow-sm space-y-1.5 whitespace-nowrap overflow-x-auto">
+                    <p class="text-sky-700 font-bold mb-1">⚡ GESTURE RULES:</p>
+                    <p>🖐️ / ✊ <strong>Play/Pause:</strong> Hold Palm or Fist (1.5s)</p>
+                    <p>✌️ / 👍 <strong>Volume Up/Down:</strong> Two Hands / Thumbs Up (Instant)</p>
+                    <p>✋ <strong>Click:</strong> Back-hand gesture (Instant)</p>
+                </div>
+
+                <div class="flex justify-between items-center">
+                    <h2 class="text-xs font-mono font-bold text-sky-700 uppercase tracking-widest">Live Face & Gestures</h2>
+                    <span id="cam-status-badge" class="text-xs font-mono px-3 py-1 rounded-full bg-rose-100 text-rose-600 border border-rose-200">Camera: Off</span>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <button onclick="toggleCam(true)" class="btn-cloud-shape text-xs font-mono shadow-md active:scale-95">
+                        ▶ Start Cam
+                    </button>
+                    <button onclick="toggleCam(false)" class="btn-cloud-shape btn-cloud-rose text-xs font-mono shadow-md active:scale-95">
+                        ⏹ Stop Cam
+                    </button>
+                </div>
+
+                <!-- Animated Light Sky Clouds GIF Placeholder when offline -->
+                <div class="relative w-full aspect-video rounded-2xl overflow-hidden bg-sky-100 border border-sky-200 shadow-inner">
+                    <img id="webcam-stream" src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" class="w-full h-full object-cover" alt="Webcam Light GIF Placeholder">
+                </div>
+
+                <div class="bg-white/90 border border-sky-200 rounded-2xl p-4 font-mono text-center shadow-sm">
+                    <span class="text-[10px] text-slate-400 uppercase tracking-widest block mb-1">Live Gesture Telemetry</span>
+                    <span id="gesture-text" class="text-sm font-extrabold text-sky-600 tracking-wider">WAITING FOR INPUT...</span>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        function toggleCam(state) {
+            fetch('/toggle_cam', { method: 'POST' })
+                .then(res => res.json())
+                .then(data => {
+                    const img = document.getElementById('webcam-stream');
+                    const badge = document.getElementById('cam-status-badge');
+                    if (data.camera_active) {
+                        img.src = "{{ url_for('video_feed') }}?t=" + new Date().getTime();
+                        badge.innerText = "Camera: On";
+                        badge.className = "text-xs font-mono px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 border border-emerald-200";
+                    } else {
+                        img.src = "https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif";
+                        badge.innerText = "Camera: Off";
+                        badge.className = "text-xs font-mono px-3 py-1 rounded-full bg-rose-100 text-rose-600 border border-rose-200";
+                    }
+                });
+        }
+
+        function performSearch() {
+            const query = document.getElementById('search-query').value;
+            if(!query) return;
+            fetch('/search_api', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ query: query })
+            })
+            .then(res => res.json())
+            .then(data => {
+                const container = document.getElementById('results-container');
+                container.innerHTML = '';
+                if(data.results.length === 0) {
+                    container.innerHTML = `<div class="col-span-2 text-center py-10 text-xs text-rose-500 font-mono">No videos found. Check API key quota.</div>`;
+                    return;
+                }
+                data.results.forEach(vid => {
+                    container.innerHTML += `
+                        <div onclick="openVideo('${vid.videoId}')" class="video-card cursor-pointer p-2.5 flex flex-col justify-between group shadow-sm">
+                            <div class="relative rounded-xl overflow-hidden aspect-video mb-2 bg-slate-100">
+                                <img src="${vid.thumbnail}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <p class="text-xs font-bold text-slate-800 line-clamp-1 group-hover:text-sky-600 transition-colors">${vid.title}</p>
+                        </div>
+                    `;
+                });
+            });
+        }
+
+        function openVideo(videoId) {
+            window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank');
+        }
+
+        setInterval(() => {
+            fetch('/get_gesture')
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById('gesture-text').innerText = data.gesture;
+                });
+        }, 300);
+    </script>
+</body>
+</html>

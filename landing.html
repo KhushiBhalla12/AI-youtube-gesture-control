@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI YouTube Gesture // Welcome</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 50%, #7dd3fc 100%);
+            background-attachment: fixed;
+            color: #0f172a;
+        }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        
+        .glass-light-sky {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 20px 40px -15px rgba(2, 132, 199, 0.15);
+        }
+
+        .btn-cloud-shape {
+            border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+            background: #ffffff;
+            color: #0f172a;
+            box-shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.25),
+                        inset 0 2px 6px rgba(255, 255, 255, 1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 1rem 2.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            font-weight: 800;
+        }
+        .btn-cloud-shape:hover {
+            transform: translateY(-4px) scale(1.03);
+            color: #0284c7;
+            border-radius: 50% 50% 60% 40% / 60% 50% 50% 40%;
+            box-shadow: 0 18px 35px -5px rgba(2, 132, 199, 0.4),
+                        inset 0 2px 8px rgba(255, 255, 255, 1);
+            background: #f0f9ff;
+        }
+
+        .feature-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 2rem;
+        }
+        .feature-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(2, 132, 199, 0.4);
+            box-shadow: 0 20px 40px -15px rgba(2, 132, 199, 0.25);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between p-6 antialiased">
+
+    <header class="w-full max-w-6xl mx-auto flex justify-between items-center py-4 px-8 glass-light-sky rounded-2xl">
+        <div class="flex items-center gap-3">
+            <span class="text-xl">☁️</span>
+            <h1 class="text-xl font-extrabold tracking-tight text-slate-900">
+                AI <span class="text-sky-600">YOUTUBE GESTURE</span>
+            </h1>
+        </div>
+        <div class="flex items-center gap-2 bg-white/80 px-4 py-2 rounded-full border border-sky-200 text-xs font-mono shadow-sm">
+            <span class="w-2.5 h-2.5 rounded-full bg-sky-500 animate-ping"></span>
+            <span class="text-slate-700">Active</span>
+        </div>
+    </header>
+
+    <main class="w-full max-w-4xl mx-auto text-center py-12 flex flex-col items-center gap-6">
+        <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/80 border border-sky-200 text-sky-700 text-xs font-mono uppercase tracking-widest backdrop-blur-md shadow-sm">
+            ☁️ AI YouTube Gesture
+        </div>
+        
+        <h2 class="text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-slate-900">
+            Control YouTube With <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-blue-600">AI Hand Gestures</span>
+        </h2>
+        
+        <p class="text-slate-600 text-base max-w-xl font-mono leading-relaxed">
+            Seamlessly search YouTube videos and command playback using real-time computer vision hand tracking.
+        </p>
+
+        <div class="pt-2 pb-4">
+            <a href="/dashboard" class="btn-cloud-shape text-base shadow-xl">
+                <span>Launch Dashboard</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 w-full pt-6">
+            <div class="feature-card glass-light-sky p-6 text-left border-white/60 flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 rounded-2xl bg-sky-100 border border-sky-200 flex items-center justify-center text-xl mb-4 shadow-sm">🖐️</div>
+                    <h3 class="text-base font-bold text-slate-900 mb-2">Smart Gestures</h3>
+                    <p class="text-xs text-slate-600 font-mono leading-relaxed">Control play, pause, volume, and clicks using intuitive hand movements.</p>
+                </div>
+            </div>
+
+            <div class="feature-card glass-light-sky p-6 text-left border-white/60 flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 rounded-2xl bg-blue-100 border border-blue-200 flex items-center justify-center text-xl mb-4 shadow-sm">🎵</div>
+                    <h3 class="text-base font-bold text-slate-900 mb-2">Neural Search</h3>
+                    <p class="text-xs text-slate-600 font-mono leading-relaxed">Instantly search and stream any video via the YouTube API.</p>
+                </div>
+            </div>
+
+            <div class="feature-card glass-light-sky p-6 text-left border-white/60 flex flex-col justify-between">
+                <div>
+                    <div class="w-12 h-12 rounded-2xl bg-indigo-100 border border-indigo-200 flex items-center justify-center text-xl mb-4 shadow-sm">☁️</div>
+                    <h3 class="text-base font-bold text-slate-900 mb-2">Cloud UI</h3>
+                    <p class="text-xs text-slate-600 font-mono leading-relaxed">Clean organic white cloud shapes with smooth blue hover effects.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="w-full max-w-6xl mx-auto text-center py-4 text-xs text-slate-500 font-mono">
+        AI YouTube Gesture &copy; 2026. All rights reserved.
+    </footer>
+
+</body>
+</html>
