@@ -1,2 +1,10 @@
-# AI-youtube-gesture-control
-AI YouTube Gesture Control is a full-stack web app for touchless YouTube search and playback control using real-time Computer Vision. Built during my internship at Travarsa Private Limited, it tracks 21 hand landmarks using OpenCV and MediaPipe to control play, pause, and volume via a Flask backend and modern Tailwind CSS UI.
+AI YouTube Gesture
+It is an interactive, full-stack Computer Vision application designed for touchless media control. By combining deep learning-based hand landmark detection with real-time video streaming, users can search YouTube videos and seamlessly control playback (play, pause, volume) using intuitive hand gestures.
+
+ Key Features:-
+- Real-Time Hand Tracking: Tracks 21 hand keypoints with high precision using MediaPipe & OpenCV.
+- Smart Gesture Mapping:
+  - 🖐️ Open Palm / ✊ Fist: Hold to Play / Pause playback.
+  - 🙌 Two Hands / 👍 Thumbs Up: Adjust volume Up / Down dynamically.
+- Neural Video Search: Direct YouTube API integration for searching and playing videos within the UI dashboard.
+- Modern Glassmorphism UI: Built with Tailwind CSS for a clean, futuristic interface.
